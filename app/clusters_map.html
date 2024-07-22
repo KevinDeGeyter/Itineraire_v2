@@ -1,0 +1,2052 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_621107cd52e63ff3bcf65dc272b2f774 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_621107cd52e63ff3bcf65dc272b2f774" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_621107cd52e63ff3bcf65dc272b2f774 = L.map(
+                "map_621107cd52e63ff3bcf65dc272b2f774",
+                {
+                    center: [0.0, 0.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 2,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ba22285b5582c45c91a8e3bc9a928051 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_ba22285b5582c45c91a8e3bc9a928051.addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var marker_bbd8d86e08b724d7edb0dddb0fa99b8d = L.marker(
+                [47.39895, 0.656143],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_2a93829348fa8144cb84ebbee8fc773d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_bbd8d86e08b724d7edb0dddb0fa99b8d.setIcon(icon_2a93829348fa8144cb84ebbee8fc773d);
+        
+    
+            marker_bbd8d86e08b724d7edb0dddb0fa99b8d.bindTooltip(
+                `<div>
+                     GÎTE DES MAISONS BLANCHES
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_424e3cf2846db9a9786f766d69d5f24b = L.marker(
+                [47.399647, 0.662941],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_79acd4975260831961da6feb8d1af084 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_424e3cf2846db9a9786f766d69d5f24b.setIcon(icon_79acd4975260831961da6feb8d1af084);
+        
+    
+            marker_424e3cf2846db9a9786f766d69d5f24b.bindTooltip(
+                `<div>
+                     L'Hermitage
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d5fda73363c99f3783912b63c34b7d4d = L.marker(
+                [47.385877, 0.671821],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_fc36c7af044f96919defecc3ddb88fcd = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d5fda73363c99f3783912b63c34b7d4d.setIcon(icon_fc36c7af044f96919defecc3ddb88fcd);
+        
+    
+            marker_d5fda73363c99f3783912b63c34b7d4d.bindTooltip(
+                `<div>
+                     La Fabrique du Botanique
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0a74af52b58629a127a28182d26ed911 = L.marker(
+                [47.390688, 0.665586],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8d07d9b4098a1ad628d98c1c987f183e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_0a74af52b58629a127a28182d26ed911.setIcon(icon_8d07d9b4098a1ad628d98c1c987f183e);
+        
+    
+            marker_0a74af52b58629a127a28182d26ed911.bindTooltip(
+                `<div>
+                     La Garzette
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_099a2781b32f2709816786b0b8aa2ee3 = L.marker(
+                [47.377544, 0.662607],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_649e2afba3b483587de4e0c2316f1f92 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_099a2781b32f2709816786b0b8aa2ee3.setIcon(icon_649e2afba3b483587de4e0c2316f1f92);
+        
+    
+            marker_099a2781b32f2709816786b0b8aa2ee3.bindTooltip(
+                `<div>
+                     Le Couvent des Minimes
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_565339db78acea5ece230ddfe5e6755e = L.marker(
+                [47.380017, 0.664896],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_3ca0d6db36fe3e53a24bc89f05c337a3 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_565339db78acea5ece230ddfe5e6755e.setIcon(icon_3ca0d6db36fe3e53a24bc89f05c337a3);
+        
+    
+            marker_565339db78acea5ece230ddfe5e6755e.bindTooltip(
+                `<div>
+                     Les Agapanthes - Meublé Campanules
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7b8f69b5450214c271d94ec987f67244 = L.marker(
+                [47.395036, 0.644145],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_d652e26f0b2fa988c5176fbba0bbba0d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_7b8f69b5450214c271d94ec987f67244.setIcon(icon_d652e26f0b2fa988c5176fbba0bbba0d);
+        
+    
+            marker_7b8f69b5450214c271d94ec987f67244.bindTooltip(
+                `<div>
+                     Les Agapanthes - Meublé Fougères
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_524755121f0da22cc5ecaa5dcc370d88 = L.marker(
+                [47.395036, 0.644145],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_d1b801fd61cdc988381e2c05d627873e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_524755121f0da22cc5ecaa5dcc370d88.setIcon(icon_d1b801fd61cdc988381e2c05d627873e);
+        
+    
+            marker_524755121f0da22cc5ecaa5dcc370d88.bindTooltip(
+                `<div>
+                     Les Agapanthes - Meublé Fuchsia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d4ac5f386744718c8adbcec1137347ad = L.marker(
+                [47.380017, 0.664896],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8b808a08181dbc1543d1571dc943a8b0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_d4ac5f386744718c8adbcec1137347ad.setIcon(icon_8b808a08181dbc1543d1571dc943a8b0);
+        
+    
+            marker_d4ac5f386744718c8adbcec1137347ad.bindTooltip(
+                `<div>
+                     Les Agapanthes - Meublé Iris
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3769ef562e8aa472df634f0393a9069b = L.marker(
+                [47.380017, 0.664896],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_94000b865aa825c6fd907b52cb44fb17 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3769ef562e8aa472df634f0393a9069b.setIcon(icon_94000b865aa825c6fd907b52cb44fb17);
+        
+    
+            marker_3769ef562e8aa472df634f0393a9069b.bindTooltip(
+                `<div>
+                     Les Agapanthes - Meublé Oeillets
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ef30c55f1bb6d7c4766bee1db28112a6 = L.marker(
+                [47.340838, 0.511885],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_33ac33210b96c582af73bf8a01ac7ee1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ef30c55f1bb6d7c4766bee1db28112a6.setIcon(icon_33ac33210b96c582af73bf8a01ac7ee1);
+        
+    
+            marker_ef30c55f1bb6d7c4766bee1db28112a6.bindTooltip(
+                `<div>
+                     A Noël la nature s'invite au château !
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2bbedf8a8b93e081f8fa1723c76f6a11 = L.marker(
+                [47.339446, 0.50732],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_a387bc35f0505a83dcba56ae24965723 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_2bbedf8a8b93e081f8fa1723c76f6a11.setIcon(icon_a387bc35f0505a83dcba56ae24965723);
+        
+    
+            marker_2bbedf8a8b93e081f8fa1723c76f6a11.bindTooltip(
+                `<div>
+                     Aire CAMPING-CAR PARK de Villandry
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9e6297278d8370117d626c131c03b45a = L.marker(
+                [47.340891, 0.512409],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_fde0be165a406b8b9b0d8702ea226c0e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_9e6297278d8370117d626c131c03b45a.setIcon(icon_fde0be165a406b8b9b0d8702ea226c0e);
+        
+    
+            marker_9e6297278d8370117d626c131c03b45a.bindTooltip(
+                `<div>
+                     Château et Jardins de Villandry
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01d65ce1b077eb258793b5944b8e209a = L.marker(
+                [47.357818, 0.486931],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_9c46516cddf87315a363aa64d13df72c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_01d65ce1b077eb258793b5944b8e209a.setIcon(icon_9c46516cddf87315a363aa64d13df72c);
+        
+    
+            marker_01d65ce1b077eb258793b5944b8e209a.bindTooltip(
+                `<div>
+                     Closerie de La Véronique
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74c466b3e4da9e40fa6673116e90a22f = L.marker(
+                [47.330649, 0.522725],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_fb13121d65cd1eecab7ce81239eda467 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_74c466b3e4da9e40fa6673116e90a22f.setIcon(icon_fb13121d65cd1eecab7ce81239eda467);
+        
+    
+            marker_74c466b3e4da9e40fa6673116e90a22f.bindTooltip(
+                `<div>
+                     Gîte Nature et châteaux
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ff92eb0f1a1f123224d9cd41046198d6 = L.marker(
+                [47.395967, 0.46736],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_0eefccb289eae8078dc941168a0706df = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_ff92eb0f1a1f123224d9cd41046198d6.setIcon(icon_0eefccb289eae8078dc941168a0706df);
+        
+    
+            marker_ff92eb0f1a1f123224d9cd41046198d6.bindTooltip(
+                `<div>
+                     La Maison de Louise
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b82cabb569944e68693852ef6d1b996a = L.marker(
+                [47.340402, 0.511259],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_e17371cfff0ee7e8d674f680d24cdbfa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_b82cabb569944e68693852ef6d1b996a.setIcon(icon_e17371cfff0ee7e8d674f680d24cdbfa);
+        
+    
+            marker_b82cabb569944e68693852ef6d1b996a.bindTooltip(
+                `<div>
+                     La Renaissance
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_69b3518f9410852478f27f11a2966b0b = L.marker(
+                [47.340541, 0.511665],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_944f48725543700aa2f524863cad25c5 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_69b3518f9410852478f27f11a2966b0b.setIcon(icon_944f48725543700aa2f524863cad25c5);
+        
+    
+            marker_69b3518f9410852478f27f11a2966b0b.bindTooltip(
+                `<div>
+                     Le Cheval Rouge
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0159bdd2378d2083847a440ff57fea79 = L.marker(
+                [47.340655, 0.511446],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_ec8c3c209e52c541305425d14f88555a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_0159bdd2378d2083847a440ff57fea79.setIcon(icon_ec8c3c209e52c541305425d14f88555a);
+        
+    
+            marker_0159bdd2378d2083847a440ff57fea79.bindTooltip(
+                `<div>
+                     Le Colombien
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bb579d81ee58af001b34c258ac069d24 = L.marker(
+                [47.336665, 0.514468],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_40d8eb44d42cadf4437284d72887c261 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_bb579d81ee58af001b34c258ac069d24.setIcon(icon_40d8eb44d42cadf4437284d72887c261);
+        
+    
+            marker_bb579d81ee58af001b34c258ac069d24.bindTooltip(
+                `<div>
+                     Le Haut des Lys
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_18d8619df2cb63685040082ed6874c22 = L.marker(
+                [47.432327, 0.634208],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_23c58ef2d5b4dcf1a37fd75942b7d811 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_18d8619df2cb63685040082ed6874c22.setIcon(icon_23c58ef2d5b4dcf1a37fd75942b7d811);
+        
+    
+            marker_18d8619df2cb63685040082ed6874c22.bindTooltip(
+                `<div>
+                     Château de l'Aubrière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b11ec34d6b8f2329f56e0ae4828fd3fb = L.marker(
+                [47.477676, 0.669303],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_9f584aa08f57fdd80f3344c8a3fe6b81 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b11ec34d6b8f2329f56e0ae4828fd3fb.setIcon(icon_9f584aa08f57fdd80f3344c8a3fe6b81);
+        
+    
+            marker_b11ec34d6b8f2329f56e0ae4828fd3fb.bindTooltip(
+                `<div>
+                     GITE DE LA RUE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e3a7e9749a3f3cc4fc099685fba3a3f7 = L.marker(
+                [47.455967, 0.614711],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_12f8ae8bf4db0fcce0cd0b44674db493 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e3a7e9749a3f3cc4fc099685fba3a3f7.setIcon(icon_12f8ae8bf4db0fcce0cd0b44674db493);
+        
+    
+            marker_e3a7e9749a3f3cc4fc099685fba3a3f7.bindTooltip(
+                `<div>
+                     Gîte de l'Etang
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9ac3c8800b5ca385d1acf1a1c7b3e729 = L.marker(
+                [47.452439, 0.649539],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_83fdf15c569a0f96433edcf4f7f85bea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_9ac3c8800b5ca385d1acf1a1c7b3e729.setIcon(icon_83fdf15c569a0f96433edcf4f7f85bea);
+        
+    
+            marker_9ac3c8800b5ca385d1acf1a1c7b3e729.bindTooltip(
+                `<div>
+                     Gîte du Château Rouge
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8303a82b99203d0498dd57e2f79a7a74 = L.marker(
+                [47.456256, 0.615556],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_e4a855b2debc81179b10c5e9589cb5c2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_8303a82b99203d0498dd57e2f79a7a74.setIcon(icon_e4a855b2debc81179b10c5e9589cb5c2);
+        
+    
+            marker_8303a82b99203d0498dd57e2f79a7a74.bindTooltip(
+                `<div>
+                     Gîte du Moulin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e7b9b2ea6704676fc22bd4b795285749 = L.marker(
+                [47.445934, 0.645184],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8c7d5e3c5af787b2300b238b6b942587 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_e7b9b2ea6704676fc22bd4b795285749.setIcon(icon_8c7d5e3c5af787b2300b238b6b942587);
+        
+    
+            marker_e7b9b2ea6704676fc22bd4b795285749.bindTooltip(
+                `<div>
+                     La Blanchetière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3678f859bf4a29655c8fc3ec9671038f = L.marker(
+                [47.476704, 0.611598],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_2b9d34235604ef826f13d65dca68c257 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_3678f859bf4a29655c8fc3ec9671038f.setIcon(icon_2b9d34235604ef826f13d65dca68c257);
+        
+    
+            marker_3678f859bf4a29655c8fc3ec9671038f.bindTooltip(
+                `<div>
+                     La Carrière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b942eaa10beda06191c600399018ba7f = L.marker(
+                [47.427795, 0.625589],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_2ca172377349c885cf67064f4edee37e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_b942eaa10beda06191c600399018ba7f.setIcon(icon_2ca172377349c885cf67064f4edee37e);
+        
+    
+            marker_b942eaa10beda06191c600399018ba7f.bindTooltip(
+                `<div>
+                     La Huberdière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_74491f4c3e91a1fe6a74459cbc94b19c = L.marker(
+                [47.47566, 0.61123],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_d1ed2bdedb90fc48714545d789df4a3f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_74491f4c3e91a1fe6a74459cbc94b19c.setIcon(icon_d1ed2bdedb90fc48714545d789df4a3f);
+        
+    
+            marker_74491f4c3e91a1fe6a74459cbc94b19c.bindTooltip(
+                `<div>
+                     La Longère
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce28d2e27245dcbb7eaf8dd3ee3d4cab = L.marker(
+                [47.452401, 0.648544],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_45c4def24b3cbc3dd2e56a8a0e73ae99 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_ce28d2e27245dcbb7eaf8dd3ee3d4cab.setIcon(icon_45c4def24b3cbc3dd2e56a8a0e73ae99);
+        
+    
+            marker_ce28d2e27245dcbb7eaf8dd3ee3d4cab.bindTooltip(
+                `<div>
+                     Le Manoir du Rouvre
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c8c25db2a5e33bb71861d4c233e09d6b = L.marker(
+                [47.38102, 0.559138],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_838909519331b9c3899b825e05ffa461 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_c8c25db2a5e33bb71861d4c233e09d6b.setIcon(icon_838909519331b9c3899b825e05ffa461);
+        
+    
+            marker_c8c25db2a5e33bb71861d4c233e09d6b.bindTooltip(
+                `<div>
+                     Aire de services du camping les Granges
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_80533bbd31dc78b1651621a6560d644f = L.marker(
+                [47.349906, 0.549538],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1f50800719f6f05deb6ef10fe2b339a1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_80533bbd31dc78b1651621a6560d644f.setIcon(icon_1f50800719f6f05deb6ef10fe2b339a1);
+        
+    
+            marker_80533bbd31dc78b1651621a6560d644f.bindTooltip(
+                `<div>
+                     Camping Onlycamp La Confluence
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b2e02b62daf5c9b890e93512f417f0f2 = L.marker(
+                [47.39742, 0.524468],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_513eb8d0ee34a0d4c2bc72ef4aa6f435 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_b2e02b62daf5c9b890e93512f417f0f2.setIcon(icon_513eb8d0ee34a0d4c2bc72ef4aa6f435);
+        
+    
+            marker_b2e02b62daf5c9b890e93512f417f0f2.bindTooltip(
+                `<div>
+                     Château de Beauvois
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d0e7933062dddb457aad33e67c7b7f45 = L.marker(
+                [47.381776, 0.557192],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_b667b7a6368d4e3a6bf684ed8e041c67 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_d0e7933062dddb457aad33e67c7b7f45.setIcon(icon_b667b7a6368d4e3a6bf684ed8e041c67);
+        
+    
+            marker_d0e7933062dddb457aad33e67c7b7f45.bindTooltip(
+                `<div>
+                     Cirque de Noël
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_22c2d9363dea84fe9202dc85c5a608f3 = L.marker(
+                [47.379464, 0.55939],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_40390e46ddce337b94ccee5065ba2af9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_22c2d9363dea84fe9202dc85c5a608f3.setIcon(icon_40390e46ddce337b94ccee5065ba2af9);
+        
+    
+            marker_22c2d9363dea84fe9202dc85c5a608f3.bindTooltip(
+                `<div>
+                     Flower Camping Les Granges
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_51cdb6cadd4c6a41278adbe362a01755 = L.marker(
+                [47.347463, 0.549088],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8c69a20f87fb699313f1aa27efcacf37 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_51cdb6cadd4c6a41278adbe362a01755.setIcon(icon_8c69a20f87fb699313f1aa27efcacf37);
+        
+    
+            marker_51cdb6cadd4c6a41278adbe362a01755.bindTooltip(
+                `<div>
+                     Ker Lou Ann
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a5268f1c083931fadcd7c45901c7839e = L.marker(
+                [47.347407, 0.549266],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_f478ff58aa6df0593e7cb8369b2fac64 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_a5268f1c083931fadcd7c45901c7839e.setIcon(icon_f478ff58aa6df0593e7cb8369b2fac64);
+        
+    
+            marker_a5268f1c083931fadcd7c45901c7839e.bindTooltip(
+                `<div>
+                     La Closerie du Chateauvert
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_ce5a7ca70e98b07edd40d3f509e56353 = L.marker(
+                [47.362566, 0.561465],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_17cc062e70b2cfdc22854f19c5d394ae = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_ce5a7ca70e98b07edd40d3f509e56353.setIcon(icon_17cc062e70b2cfdc22854f19c5d394ae);
+        
+    
+            marker_ce5a7ca70e98b07edd40d3f509e56353.bindTooltip(
+                `<div>
+                     La Grange Touraine
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_fbcd8143aca906f1f5a5791ea3d53154 = L.marker(
+                [47.347234, 0.540084],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8f569389b0fe430920fb5884cd23ac1a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_fbcd8143aca906f1f5a5791ea3d53154.setIcon(icon_8f569389b0fe430920fb5884cd23ac1a);
+        
+    
+            marker_fbcd8143aca906f1f5a5791ea3d53154.bindTooltip(
+                `<div>
+                     La Salamandre
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_981812f5e0f73aa2a599680546cb19ca = L.marker(
+                [47.384298, 0.553746],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_5f4d7cb6d85ce78c99171a26c891ef5c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_981812f5e0f73aa2a599680546cb19ca.setIcon(icon_5f4d7cb6d85ce78c99171a26c891ef5c);
+        
+    
+            marker_981812f5e0f73aa2a599680546cb19ca.bindTooltip(
+                `<div>
+                     Le Coteau Fleuri
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1bdc1e9af6f77b94ad5d41eecfd41700 = L.marker(
+                [47.394605, 0.692023],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_cff2d51006af7f83067eb5795173bec4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_1bdc1e9af6f77b94ad5d41eecfd41700.setIcon(icon_cff2d51006af7f83067eb5795173bec4);
+        
+    
+            marker_1bdc1e9af6f77b94ad5d41eecfd41700.bindTooltip(
+                `<div>
+                     Au coeur du Tours Historique
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3e628be78231452be1658fa56cfb432 = L.marker(
+                [47.391179, 0.68897],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_62ff363322408cc06c7efb2f16fa6455 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_b3e628be78231452be1658fa56cfb432.setIcon(icon_62ff363322408cc06c7efb2f16fa6455);
+        
+    
+            marker_b3e628be78231452be1658fa56cfb432.bindTooltip(
+                `<div>
+                     Bal Renaissance
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6bc1f60eb96b7d1676b9aeeb87ded387 = L.marker(
+                [47.392816, 0.683029],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_7a19f13e59a5db0bec83edac9093dd03 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_6bc1f60eb96b7d1676b9aeeb87ded387.setIcon(icon_7a19f13e59a5db0bec83edac9093dd03);
+        
+    
+            marker_6bc1f60eb96b7d1676b9aeeb87ded387.bindTooltip(
+                `<div>
+                     Basilique Saint-Martin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_af5fecc5029c578c0a683b85fe9bb18e = L.marker(
+                [47.394729, 0.688703],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_b61a67fca86bc1dff918825e4d9111d4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_af5fecc5029c578c0a683b85fe9bb18e.setIcon(icon_b61a67fca86bc1dff918825e4d9111d4);
+        
+    
+            marker_af5fecc5029c578c0a683b85fe9bb18e.bindTooltip(
+                `<div>
+                     Best Western Central Hôtel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2847494a5287db38bf17feb4e93725b2 = L.marker(
+                [47.391169, 0.697215],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_946e79ede6f8d6c9dc15c2da184b25f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_2847494a5287db38bf17feb4e93725b2.setIcon(icon_946e79ede6f8d6c9dc15c2da184b25f0);
+        
+    
+            marker_2847494a5287db38bf17feb4e93725b2.bindTooltip(
+                `<div>
+                     Best Western Plus L'Artist Hôtel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8a27bda4560aabb52bb24f26506e8a70 = L.marker(
+                [47.39546, 0.68501],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_035cd4b492c0729e7ebf5f52eec53146 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_8a27bda4560aabb52bb24f26506e8a70.setIcon(icon_035cd4b492c0729e7ebf5f52eec53146);
+        
+    
+            marker_8a27bda4560aabb52bb24f26506e8a70.bindTooltip(
+                `<div>
+                     C koi l’art contemporain ?
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_595d0fe7b3712ff13bcb16896e352ea7 = L.marker(
+                [47.39542, 0.68544],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_a5bae4cc543bb27747629ca5abc6184a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_595d0fe7b3712ff13bcb16896e352ea7.setIcon(icon_a5bae4cc543bb27747629ca5abc6184a);
+        
+    
+            marker_595d0fe7b3712ff13bcb16896e352ea7.bindTooltip(
+                `<div>
+                     C koi l’art contemporain ??
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b870bee69c0748c66adf3351431dd340 = L.marker(
+                [47.39546, 0.68501],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_9c8ab61056d6000bda93e654bd34b25e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_b870bee69c0748c66adf3351431dd340.setIcon(icon_9c8ab61056d6000bda93e654bd34b25e);
+        
+    
+            marker_b870bee69c0748c66adf3351431dd340.bindTooltip(
+                `<div>
+                     C l’atelier mashup Olivier Debré
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6d439b89894052259fb0b949f8a1e6f1 = L.marker(
+                [47.395777, 0.695612],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_03b8ff3cbbcfa44a572744730caf026e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_6d439b89894052259fb0b949f8a1e6f1.setIcon(icon_03b8ff3cbbcfa44a572744730caf026e);
+        
+    
+            marker_6d439b89894052259fb0b949f8a1e6f1.bindTooltip(
+                `<div>
+                     Cathédrale Saint-Gatien
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_55bb1ecd9d4fa189dc1171bab88db9cb = L.marker(
+                [47.384051, 0.684764],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_f0dd9b127a67d68181f0388394e206e9 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_55bb1ecd9d4fa189dc1171bab88db9cb.setIcon(icon_f0dd9b127a67d68181f0388394e206e9);
+        
+    
+            marker_55bb1ecd9d4fa189dc1171bab88db9cb.bindTooltip(
+                `<div>
+                     Central Parc Tours - Studio *** Orme de sibérie
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e84065f06ab7f4ca0cb2460459f201cd = L.marker(
+                [47.354944, 0.63402],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_fb0d1bd5716e08d22a75c6d538f2dc79 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_e84065f06ab7f4ca0cb2460459f201cd.setIcon(icon_fb0d1bd5716e08d22a75c6d538f2dc79);
+        
+    
+            marker_e84065f06ab7f4ca0cb2460459f201cd.bindTooltip(
+                `<div>
+                     Aire de services du camping Airotel La Mignardière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1d884c0aa24b307f0794f1a1682b0f0b = L.marker(
+                [47.355184, 0.632911],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_01a2d64820568f1d35f41d8c13ba1d89 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_1d884c0aa24b307f0794f1a1682b0f0b.setIcon(icon_01a2d64820568f1d35f41d8c13ba1d89);
+        
+    
+            marker_1d884c0aa24b307f0794f1a1682b0f0b.bindTooltip(
+                `<div>
+                     Airotel La Mignardière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6b4c94d92e9ad24516701eec07711e06 = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_4f84af52c8197d42cfb5773f945786a7 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_6b4c94d92e9ad24516701eec07711e06.setIcon(icon_4f84af52c8197d42cfb5773f945786a7);
+        
+    
+            marker_6b4c94d92e9ad24516701eec07711e06.bindTooltip(
+                `<div>
+                     Albin de la Simone - Les Cents Prochaines Années
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3ad9a9b94f982f9448fdeeaaf4321fc3 = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1b2f838d07cb7092674de74274d3ed69 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_3ad9a9b94f982f9448fdeeaaf4321fc3.setIcon(icon_1b2f838d07cb7092674de74274d3ed69);
+        
+    
+            marker_3ad9a9b94f982f9448fdeeaaf4321fc3.bindTooltip(
+                `<div>
+                     Ballet Julien Lestel
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7809e571a7302eaccca6121f05720f1f = L.marker(
+                [47.3457, 0.639009],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_a9b8ad75958141d454e7a4f8f044df7e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_7809e571a7302eaccca6121f05720f1f.setIcon(icon_a9b8ad75958141d454e7a4f8f044df7e);
+        
+    
+            marker_7809e571a7302eaccca6121f05720f1f.bindTooltip(
+                `<div>
+                     Campanile Tours Sud
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8d4f5875bd235462fef51af15ba4898a = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_12ad75e3f9d535f426f94620d5d93eb2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_8d4f5875bd235462fef51af15ba4898a.setIcon(icon_12ad75e3f9d535f426f94620d5d93eb2);
+        
+    
+            marker_8d4f5875bd235462fef51af15ba4898a.bindTooltip(
+                `<div>
+                     Chantal Goya - Sur la route enchantée
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3c1bc1039b0b58eb74fe8466508b4c1a = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_18416dc1bbcf5e211e7ba3067aeeafab = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_3c1bc1039b0b58eb74fe8466508b4c1a.setIcon(icon_18416dc1bbcf5e211e7ba3067aeeafab);
+        
+    
+            marker_3c1bc1039b0b58eb74fe8466508b4c1a.bindTooltip(
+                `<div>
+                     Concerto pour deux clowns - les Rois Vagabonds
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_379b91cdbfb5e6431465d734be064997 = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_5bde116091f8fd93c990577e673dba2c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_379b91cdbfb5e6431465d734be064997.setIcon(icon_5bde116091f8fd93c990577e673dba2c);
+        
+    
+            marker_379b91cdbfb5e6431465d734be064997.bindTooltip(
+                `<div>
+                     Danceperados of Ireland - Hooked
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a58a2defd1fce35e939b9fdb0ee0045a = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_c177d7ef2f3d072fb86915b723a28c2a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_a58a2defd1fce35e939b9fdb0ee0045a.setIcon(icon_c177d7ef2f3d072fb86915b723a28c2a);
+        
+    
+            marker_a58a2defd1fce35e939b9fdb0ee0045a.bindTooltip(
+                `<div>
+                     Depuis que je suis né
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_85784708fd96417337efeaa105bbb643 = L.marker(
+                [47.35236, 0.64488],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_6427799b12ddf043147bee9c9ebfea20 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "lightgreen", "prefix": "glyphicon"}
+            );
+            marker_85784708fd96417337efeaa105bbb643.setIcon(icon_6427799b12ddf043147bee9c9ebfea20);
+        
+    
+            marker_85784708fd96417337efeaa105bbb643.bindTooltip(
+                `<div>
+                     Enrico Macias - Encore un tour
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_1d29658ede12277bf6dedc9a99c1699d = L.marker(
+                [47.42994, 0.704972],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_6d85ea9fa8597b7901c95fc9cab23ef1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_1d29658ede12277bf6dedc9a99c1699d.setIcon(icon_6d85ea9fa8597b7901c95fc9cab23ef1);
+        
+    
+            marker_1d29658ede12277bf6dedc9a99c1699d.bindTooltip(
+                `<div>
+                     B&B Hôtel Tours Nord 2 La Petite Arche
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b93373947ff0dc8b8161572cd6696c54 = L.marker(
+                [47.425027, 0.699838],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_a78a9b2964b5a05d2abdddf027959629 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_b93373947ff0dc8b8161572cd6696c54.setIcon(icon_a78a9b2964b5a05d2abdddf027959629);
+        
+    
+            marker_b93373947ff0dc8b8161572cd6696c54.bindTooltip(
+                `<div>
+                     Brit Hotel Essentiel Tours Nord
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_7c27b8febb05cc910358b03dd1edb380 = L.marker(
+                [47.437922, 0.694534],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_ff9e9cfbc6aa1074a0f06fdf1562c709 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_7c27b8febb05cc910358b03dd1edb380.setIcon(icon_ff9e9cfbc6aa1074a0f06fdf1562c709);
+        
+    
+            marker_7c27b8febb05cc910358b03dd1edb380.bindTooltip(
+                `<div>
+                     Cabaret Extravagance
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_358313d20ca7b6f442aad3e613e190c5 = L.marker(
+                [47.422515, 0.708605],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_7df474ba6ef4ef4bf4d1deaa2c4b7178 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_358313d20ca7b6f442aad3e613e190c5.setIcon(icon_7df474ba6ef4ef4bf4d1deaa2c4b7178);
+        
+    
+            marker_358313d20ca7b6f442aad3e613e190c5.bindTooltip(
+                `<div>
+                     Campanile Tours Nord - Forum Melies
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c489a6a7a97d1fa8eef5f581e9b2fd89 = L.marker(
+                [47.405079, 0.715668],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_c9db4065592b866a3949c1e74f4a0ba2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_c489a6a7a97d1fa8eef5f581e9b2fd89.setIcon(icon_c9db4065592b866a3949c1e74f4a0ba2);
+        
+    
+            marker_c489a6a7a97d1fa8eef5f581e9b2fd89.bindTooltip(
+                `<div>
+                     Clos de Puyraton
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_35d435c975fe10cc7188a8ce155cd366 = L.marker(
+                [47.438074, 0.709249],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_af4fd786249a144d6f221561bf463197 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_35d435c975fe10cc7188a8ce155cd366.setIcon(icon_af4fd786249a144d6f221561bf463197);
+        
+    
+            marker_35d435c975fe10cc7188a8ce155cd366.bindTooltip(
+                `<div>
+                     Hôtel F1 Tours Nord
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5832c4f4fa26ca25b12bfe89fffcb97f = L.marker(
+                [47.413046, 0.6897],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_3038de93d24a00a90414739d69db8345 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_5832c4f4fa26ca25b12bfe89fffcb97f.setIcon(icon_3038de93d24a00a90414739d69db8345);
+        
+    
+            marker_5832c4f4fa26ca25b12bfe89fffcb97f.bindTooltip(
+                `<div>
+                     Hôtel Italia
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_88b578b274a378a4ba95b2f47edd55b4 = L.marker(
+                [47.43688, 0.710409],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1c55bc3810e4c8f38cc84a593e6ab28d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_88b578b274a378a4ba95b2f47edd55b4.setIcon(icon_1c55bc3810e4c8f38cc84a593e6ab28d);
+        
+    
+            marker_88b578b274a378a4ba95b2f47edd55b4.bindTooltip(
+                `<div>
+                     Hôtel Première Classe Tours Nord
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_0e71eeb73e68f117c7a771af0d75ccc2 = L.marker(
+                [47.437572, 0.708707],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_5fa7b97623e4cd60953eef1ac155bec8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_0e71eeb73e68f117c7a771af0d75ccc2.setIcon(icon_5fa7b97623e4cd60953eef1ac155bec8);
+        
+    
+            marker_0e71eeb73e68f117c7a771af0d75ccc2.bindTooltip(
+                `<div>
+                     Ibis Budget Tours Nord
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e732687cb6b81bb5e33aaf35d5f5bce4 = L.marker(
+                [47.426804, 0.701618],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_2b4a74478a8c83617c48cdfa29560384 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "pink", "prefix": "glyphicon"}
+            );
+            marker_e732687cb6b81bb5e33aaf35d5f5bce4.setIcon(icon_2b4a74478a8c83617c48cdfa29560384);
+        
+    
+            marker_e732687cb6b81bb5e33aaf35d5f5bce4.bindTooltip(
+                `<div>
+                     Ibis Tours Nord
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2b1829eed0c038e809662694709fc9ea = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1fde16245ffd92e3a0b4d9334f105446 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_2b1829eed0c038e809662694709fc9ea.setIcon(icon_1fde16245ffd92e3a0b4d9334f105446);
+        
+    
+            marker_2b1829eed0c038e809662694709fc9ea.bindTooltip(
+                `<div>
+                     "Talent du coin", rencontre-dédicace avec Michel Tironneau
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_742867975ba4226125689a99302cbeb6 = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_caf9d7a971bc14ae7d09176c2cfc8359 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_742867975ba4226125689a99302cbeb6.setIcon(icon_caf9d7a971bc14ae7d09176c2cfc8359);
+        
+    
+            marker_742867975ba4226125689a99302cbeb6.bindTooltip(
+                `<div>
+                     Atelier découverte des échecs
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9eac5a347777df09fbd89542eda9c9dd = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1498715934cf20c854bcabe6666727d6 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_9eac5a347777df09fbd89542eda9c9dd.setIcon(icon_1498715934cf20c854bcabe6666727d6);
+        
+    
+            marker_9eac5a347777df09fbd89542eda9c9dd.bindTooltip(
+                `<div>
+                     Atelier « Papillons poétiques »
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_5f18bc71a4b16ba6e24745aae16bd6a1 = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_f3ab2dff833248b975ed2dbf6b4e51e1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_5f18bc71a4b16ba6e24745aae16bd6a1.setIcon(icon_f3ab2dff833248b975ed2dbf6b4e51e1);
+        
+    
+            marker_5f18bc71a4b16ba6e24745aae16bd6a1.bindTooltip(
+                `<div>
+                     Au bout du conte : " Quatre amis dans la neige"
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_f0b6a3e9f8794f789ef4cabba71ccee4 = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_3d69a37b1b1e9307064c3d3d948fcdef = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_f0b6a3e9f8794f789ef4cabba71ccee4.setIcon(icon_3d69a37b1b1e9307064c3d3d948fcdef);
+        
+    
+            marker_f0b6a3e9f8794f789ef4cabba71ccee4.bindTooltip(
+                `<div>
+                     Au bout du conte : « Comment le feu est venu au monde ? »
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b3554472b8b745e33cbb9e61fea3c9e3 = L.marker(
+                [47.367854, 0.672397],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_ecdffc5cb06a3efae99a7e45a2587808 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_b3554472b8b745e33cbb9e61fea3c9e3.setIcon(icon_ecdffc5cb06a3efae99a7e45a2587808);
+        
+    
+            marker_b3554472b8b745e33cbb9e61fea3c9e3.bindTooltip(
+                `<div>
+                     Aucard de Tours
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_a60a7479e91fad623c7264f006f12fa9 = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_90cc8684a0200687e9b1613a23fb5ba4 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_a60a7479e91fad623c7264f006f12fa9.setIcon(icon_90cc8684a0200687e9b1613a23fb5ba4);
+        
+    
+            marker_a60a7479e91fad623c7264f006f12fa9.bindTooltip(
+                `<div>
+                     Bookclub « féminin-féministe »
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_581dad9c4169a2e65ee9978b696eadb3 = L.marker(
+                [47.349204, 0.664608],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_5d2d5fae19fd57d5240b904fbf91441f = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_581dad9c4169a2e65ee9978b696eadb3.setIcon(icon_5d2d5fae19fd57d5240b904fbf91441f);
+        
+    
+            marker_581dad9c4169a2e65ee9978b696eadb3.bindTooltip(
+                `<div>
+                     Brit Hotel Tours Sud - Le Cheops
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9978cd50890be2773f59334593e2fb17 = L.marker(
+                [47.350202, 0.665542],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_b897db78ed30c3bffcbc9c9e67c83c19 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_9978cd50890be2773f59334593e2fb17.setIcon(icon_b897db78ed30c3bffcbc9c9e67c83c19);
+        
+    
+            marker_9978cd50890be2773f59334593e2fb17.bindTooltip(
+                `<div>
+                     Chambre d'hôtes La Jocondienne
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_bd55690a6b4b87912b82ecd5cdc7bd3b = L.marker(
+                [47.34708, 0.66617],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_ac32dee9b03aad9d0721efd616c53233 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "white", "prefix": "glyphicon"}
+            );
+            marker_bd55690a6b4b87912b82ecd5cdc7bd3b.setIcon(icon_ac32dee9b03aad9d0721efd616c53233);
+        
+    
+            marker_bd55690a6b4b87912b82ecd5cdc7bd3b.bindTooltip(
+                `<div>
+                     Club Ados
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6aa67c0f0d0458d07b8ecc754e9c33d5 = L.marker(
+                [47.33258, 0.61391],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_9d70996c5735defd63d6f6f6d0932888 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_6aa67c0f0d0458d07b8ecc754e9c33d5.setIcon(icon_9d70996c5735defd63d6f6f6d0932888);
+        
+    
+            marker_6aa67c0f0d0458d07b8ecc754e9c33d5.bindTooltip(
+                `<div>
+                     70ème Salon de Peinture et Sculpture
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_d81b73d427d70bb77a42fa84b63d6db2 = L.marker(
+                [47.357079, 0.602549],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_9afaa46c97580f958dea85e07d343888 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_d81b73d427d70bb77a42fa84b63d6db2.setIcon(icon_9afaa46c97580f958dea85e07d343888);
+        
+    
+            marker_d81b73d427d70bb77a42fa84b63d6db2.bindTooltip(
+                `<div>
+                     Bon Repos
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_c6e9d9d8100b4795d4545d42bc1e0d72 = L.marker(
+                [47.336314, 0.585285],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_aa0d9aacb100875ac109a11d7f5a099a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_c6e9d9d8100b4795d4545d42bc1e0d72.setIcon(icon_aa0d9aacb100875ac109a11d7f5a099a);
+        
+    
+            marker_c6e9d9d8100b4795d4545d42bc1e0d72.bindTooltip(
+                `<div>
+                     Château du Vau
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_3110e992b60359d3be8c5e7b608621ed = L.marker(
+                [47.360966, 0.577476],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_0e58850f21fc0c22c0da43988cb7cd7e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_3110e992b60359d3be8c5e7b608621ed.setIcon(icon_0e58850f21fc0c22c0da43988cb7cd7e);
+        
+    
+            marker_3110e992b60359d3be8c5e7b608621ed.bindTooltip(
+                `<div>
+                     Gîte de la Maison d'Ardoise
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_e4fb06c9fb6cc6fe6a1f1134d3dd4c0a = L.marker(
+                [47.327761, 0.602382],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_8eca94fe0bc73779c9733fabef497afa = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_e4fb06c9fb6cc6fe6a1f1134d3dd4c0a.setIcon(icon_8eca94fe0bc73779c9733fabef497afa);
+        
+    
+            marker_e4fb06c9fb6cc6fe6a1f1134d3dd4c0a.bindTooltip(
+                `<div>
+                     Kyriad Tours Sud Ballan-Miré
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_83e6e47e6e71a61b00dd46ed25030928 = L.marker(
+                [47.364168, 0.601525],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_6441ff0c5a3ea233b8d8a7945b10ac5a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_83e6e47e6e71a61b00dd46ed25030928.setIcon(icon_6441ff0c5a3ea233b8d8a7945b10ac5a);
+        
+    
+            marker_83e6e47e6e71a61b00dd46ed25030928.bindTooltip(
+                `<div>
+                     Le Cotentin
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_01da4763c35faf79e6231c51424f1fa8 = L.marker(
+                [47.359105, 0.60714],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_1988cf8abb2705c359c669e380926dbc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_01da4763c35faf79e6231c51424f1fa8.setIcon(icon_1988cf8abb2705c359c669e380926dbc);
+        
+    
+            marker_01da4763c35faf79e6231c51424f1fa8.bindTooltip(
+                `<div>
+                     Le clos des bergeons
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_04cc93c64da37ee5f94651799466c7e6 = L.marker(
+                [47.337193, 0.584979],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_69cb372c3b48edb4ca77fbe5db2b36f8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_04cc93c64da37ee5f94651799466c7e6.setIcon(icon_69cb372c3b48edb4ca77fbe5db2b36f8);
+        
+    
+            marker_04cc93c64da37ee5f94651799466c7e6.bindTooltip(
+                `<div>
+                     Les Cabanes du Château du Vau
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b5fb60df60be01d74427ea74d4923cf9 = L.marker(
+                [47.346585, 0.575514],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_5c8eff054a9b52791fbcd9d8985f63f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "gray", "prefix": "glyphicon"}
+            );
+            marker_b5fb60df60be01d74427ea74d4923cf9.setIcon(icon_5c8eff054a9b52791fbcd9d8985f63f0);
+        
+    
+            marker_b5fb60df60be01d74427ea74d4923cf9.bindTooltip(
+                `<div>
+                     Logis Saponine
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b192a11ffce5d7d50819068038906d2f = L.marker(
+                [47.408023, 0.584364],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_f78dfffb75998aa4a0a2edf350171a35 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_b192a11ffce5d7d50819068038906d2f.setIcon(icon_f78dfffb75998aa4a0a2edf350171a35);
+        
+    
+            marker_b192a11ffce5d7d50819068038906d2f.bindTooltip(
+                `<div>
+                     Aux Mésanges Tourangelles
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_58ac906005403f6f844ff3a173d0255a = L.marker(
+                [47.39987, 0.588315],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_ba0e42bdb426717a69d7aef82d6cc2da = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_58ac906005403f6f844ff3a173d0255a.setIcon(icon_ba0e42bdb426717a69d7aef82d6cc2da);
+        
+    
+            marker_58ac906005403f6f844ff3a173d0255a.bindTooltip(
+                `<div>
+                     Closerie de la Bruzette
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_730b6d9b092125f9ba472a233c1223be = L.marker(
+                [47.425048, 0.581954],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_0f4c6909f4df29c6b9b72b215388ff38 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_730b6d9b092125f9ba472a233c1223be.setIcon(icon_0f4c6909f4df29c6b9b72b215388ff38);
+        
+    
+            marker_730b6d9b092125f9ba472a233c1223be.bindTooltip(
+                `<div>
+                     GITE DE LA PINSONNERIE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_2d7e9ebd21821b09228aa7d9a3fd8dbf = L.marker(
+                [47.433245, 0.594558],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_e925c2129539eba3cd29934c4682aa45 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_2d7e9ebd21821b09228aa7d9a3fd8dbf.setIcon(icon_e925c2129539eba3cd29934c4682aa45);
+        
+    
+            marker_2d7e9ebd21821b09228aa7d9a3fd8dbf.bindTooltip(
+                `<div>
+                     Gîte Mamélie
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_6e24a69d351dba2f3cc4730c5a3629ad = L.marker(
+                [47.454665, 0.554292],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_7d0e4fc18c5b9c8c01c5ce7b46c6ec63 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_6e24a69d351dba2f3cc4730c5a3629ad.setIcon(icon_7d0e4fc18c5b9c8c01c5ce7b46c6ec63);
+        
+    
+            marker_6e24a69d351dba2f3cc4730c5a3629ad.bindTooltip(
+                `<div>
+                     Gîte la Trotinière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b6a076f6a4c18c2bffcbc8f25e1e9c18 = L.marker(
+                [47.485727, 0.543532],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_7e691e4648d435d8a1db1a61834f5c2c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_b6a076f6a4c18c2bffcbc8f25e1e9c18.setIcon(icon_7e691e4648d435d8a1db1a61834f5c2c);
+        
+    
+            marker_b6a076f6a4c18c2bffcbc8f25e1e9c18.bindTooltip(
+                `<div>
+                     LA GRANGE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_9d988f15e526b816ede9e69652711895 = L.marker(
+                [47.394519, 0.608022],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_d8267a3479c6b5bf60d06a028569747d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_9d988f15e526b816ede9e69652711895.setIcon(icon_d8267a3479c6b5bf60d06a028569747d);
+        
+    
+            marker_9d988f15e526b816ede9e69652711895.bindTooltip(
+                `<div>
+                     La Chattière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_8ee377ec9e4fc95161fd73b74a752cd7 = L.marker(
+                [47.433258, 0.55001],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_965575d417f4e59f9646852f8af666d1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_8ee377ec9e4fc95161fd73b74a752cd7.setIcon(icon_965575d417f4e59f9646852f8af666d1);
+        
+    
+            marker_8ee377ec9e4fc95161fd73b74a752cd7.bindTooltip(
+                `<div>
+                     La Jacqueminière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_4721034382f6d594f67429efc23cf108 = L.marker(
+                [47.419682, 0.565232],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_3a94889f32da974c5c8da264e25e8b69 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_4721034382f6d594f67429efc23cf108.setIcon(icon_3a94889f32da974c5c8da264e25e8b69);
+        
+    
+            marker_4721034382f6d594f67429efc23cf108.bindTooltip(
+                `<div>
+                     Le logis de la Roulière
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var marker_b93d6b58e10cfc22526b9be1b91f0ec7 = L.marker(
+                [47.408225, 0.598206],
+                {}
+            ).addTo(map_621107cd52e63ff3bcf65dc272b2f774);
+        
+    
+            var icon_64928fcea356b4ad4906b4e28064e544 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "black", "prefix": "glyphicon"}
+            );
+            marker_b93d6b58e10cfc22526b9be1b91f0ec7.setIcon(icon_64928fcea356b4ad4906b4e28064e544);
+        
+    
+            marker_b93d6b58e10cfc22526b9be1b91f0ec7.bindTooltip(
+                `<div>
+                     VRF TOURAINE
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>

@@ -1,0 +1,22 @@
+version: '3.9'
+
+services:
+  streamlit:
+    build: .
+    ports:
+      - "8501:8501"
+    command: python3 -m streamlit run Streamlit_app.py
+    networks:
+      - my_network_from_compose
+
+  dash:
+    build: .
+    ports:
+      - "8050:8050"
+    command: python3 dashboard_dash.py
+    networks:
+      - my_network_from_compose
+
+
+networks:
+  my_network_from_compose:
