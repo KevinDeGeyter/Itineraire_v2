@@ -13,9 +13,11 @@ RUN pip install --no-cache-dir \
     streamlit_folium \
     dash \
     plotly \
-    asyncio
+    asyncio \
+    ortools \
+    numpy \
+    spicy
 
-COPY app/AfficherCarte.py .
 COPY app/Creation_Clusters.py .
 COPY app/Streamlit_app.py .
 COPY app/dashboard_dash.py .
