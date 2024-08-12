@@ -24,6 +24,18 @@ async def hello():
     return {"data": "Hello Data Neo4j"}
 
 
+@routerDataNeo4j.get("/cluster_poi/{min_poi_count}/{max_clusters}/{max_pois_per_cluster}", response_description="Data Neo4j")
+async def get_clusters_poi_data(
+        min_poi_count: int = 6,
+        max_clusters: int = 10,
+        max_pois_per_cluster: int = 10,
+        ):
+    # await asyncio.sleep(5)
+    # received_data = {"result": data}
+    logger.debug("create_graph %s", min_poi_count)
+
+    return {"status": "OK", "data": "data"}
+
 @routerDataNeo4j.post("/graph", response_description="Data Neo4j")
 async def create_graph_neo4j(data: dict = Body(...)):
     # await asyncio.sleep(5)
