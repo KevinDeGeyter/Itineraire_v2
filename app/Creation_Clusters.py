@@ -22,7 +22,7 @@ def filter_pois(position, pois, radius_km):
     return list_pois
 
 # Fonction pour créer les clusters et les POIs dans Neo4j
-def create_graph(tx, clusters, list_pois):
+def create_graphXxxxx(tx, clusters, list_pois):
     # Supprimer tous les nœuds et relations existants dans la base Neo4j
     tx.run("MATCH (n) DETACH DELETE n")
 
@@ -121,7 +121,7 @@ password = "od1235Azerty%"
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
 # Fonction pour créer les clusters et les POIs dans Neo4j
-def create_graph_xxx(tx):
+def create_graph(tx):
     # Supprimer tous les nœuds et relations existants dans la base Neo4j
     tx.run("MATCH (n) DETACH DELETE n")
 
