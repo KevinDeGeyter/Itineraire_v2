@@ -18,6 +18,7 @@ psycopg2-binary
 geopy
 streamlit
 folium
+requests
 openrouteservice
 streamlit_folium
 dash

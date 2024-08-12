@@ -1,9 +1,10 @@
 import os
 from fastapi import APIRouter, Request, Body, status, HTTPException
 import asyncio
+import requests
 import logging
 import json
-from geopy.distance import geodesic
+# from geopy.distance import geodesic
 
 # logger = logging.getLogger('uvicorn.error')
 # logger.setLevel(logging.DEBUG)
