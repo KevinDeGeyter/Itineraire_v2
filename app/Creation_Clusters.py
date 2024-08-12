@@ -7,13 +7,6 @@ from sklearn.cluster import KMeans
 import folium
 import psycopg2
 
-# Définition des arguments en ligne de commande
-parser = argparse.ArgumentParser(description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
-parser.add_argument('--latitude', type=float, required=True, help='Latitude du point de référence')
-parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
-parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
-parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
-args = parser.parse_args()
 
 # Fonction pour filtrer les points d'intérêt dans un rayon donné autour d'une position
 def filter_pois(position, pois, radius_km):
@@ -27,6 +20,61 @@ def filter_pois(position, pois, radius_km):
         else:
             print("Coordonnées incorrectes")
     return list_pois
+
+# Fonction pour créer les clusters et les POIs dans Neo4j
+def create_graph(tx, clusters, list_pois):
+    # Supprimer tous les nœuds et relations existants dans la base Neo4j
+    tx.run("MATCH (n) DETACH DELETE n")
+
+    # Création des clusters
+    for i in range(max(clusters) + 1):
+        cluster_name = f"Cluster_{i}"
+        tx.run("CREATE (:Cluster {name: $name})", name=cluster_name)
+
+    # Création des POIs et des relations avec les clusters
+    for i, row in enumerate(list_pois):
+        label_fr, latitude, longitude, poi_type = row
+        cluster_name = f"Cluster_{clusters[i]}"
+        tx.run(
+            "CREATE (:POI {label_fr: $label_fr, latitude: $latitude, longitude: $longitude, poi_type: $poi_type})",
+            label_fr=label_fr, latitude=latitude, longitude=longitude, poi_type=poi_type
+        )
+        tx.run(
+            "MATCH (poi:POI {label_fr: $label_fr}), (cluster:Cluster {name: $cluster_name}) "
+            "CREATE (poi)-[:BELONGS_TO]->(cluster)",
+            label_fr=label_fr, cluster_name=cluster_name
+        )
+
+# Fonction pour récupérer les coordonnées GPS et les labels des POIs de chaque cluster depuis Neo4j
+def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10):
+    clusters_data = {}
+    with driver.session() as session:
+        result = session.run(
+            """
+            MATCH (c:Cluster)<-[:BELONGS_TO]-(p:POI)
+            WITH c, p
+            ORDER BY c.name, p.label_fr
+            WHERE size([(c)-[:BELONGS_TO]-(p2) | p2]) >= $min_poi_count
+            RETURN c.name AS cluster_name, collect([p.latitude, p.longitude, p.label_fr]) AS poi_data
+            LIMIT $max_clusters
+            """,
+            min_poi_count=min_poi_count,
+            max_clusters=max_clusters
+        )
+        for record in result:
+            cluster_name = record["cluster_name"]
+            poi_data = record["poi_data"][:max_pois_per_cluster]  # Limiter les POI par cluster
+            clusters_data[cluster_name] = poi_data
+    return clusters_data
+
+
+# Définition des arguments en ligne de commande
+parser = argparse.ArgumentParser(description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
+parser.add_argument('--latitude', type=float, required=True, help='Latitude du point de référence')
+parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
+parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
+parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
+args = parser.parse_args()
 
 # Connexion à la base de données PostgreSQL
 conn = psycopg2.connect(
@@ -73,7 +121,7 @@ password = "od1235Azerty%"
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
 # Fonction pour créer les clusters et les POIs dans Neo4j
-def create_graph(tx):
+def create_graph_xxx(tx):
     # Supprimer tous les nœuds et relations existants dans la base Neo4j
     tx.run("MATCH (n) DETACH DELETE n")
 
@@ -103,28 +151,6 @@ with driver.session() as session:
 # Fermeture du curseur et de la connexion à la base de données PostgreSQL
 cursor.close()
 conn.close()
-
-# Fonction pour récupérer les coordonnées GPS et les labels des POIs de chaque cluster depuis Neo4j
-def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10):
-    clusters_data = {}
-    with driver.session() as session:
-        result = session.run(
-            """
-            MATCH (c:Cluster)<-[:BELONGS_TO]-(p:POI)
-            WITH c, p
-            ORDER BY c.name, p.label_fr
-            WHERE size([(c)-[:BELONGS_TO]-(p2) | p2]) >= $min_poi_count
-            RETURN c.name AS cluster_name, collect([p.latitude, p.longitude, p.label_fr]) AS poi_data
-            LIMIT $max_clusters
-            """,
-            min_poi_count=min_poi_count,
-            max_clusters=max_clusters
-        )
-        for record in result:
-            cluster_name = record["cluster_name"]
-            poi_data = record["poi_data"][:max_pois_per_cluster]  # Limiter les POI par cluster
-            clusters_data[cluster_name] = poi_data
-    return clusters_data
 
 # Récupérer les données des POIs pour les clusters avec au moins 6 POI et au maximum 10 clusters
 clusters_data = get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10)
