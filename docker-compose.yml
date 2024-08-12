@@ -14,7 +14,7 @@ services:
     command: python3 dash/dashboard_dash.py
     networks:
       - my_network_from_compose
-      -
+
   backend:
     image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     environment:
