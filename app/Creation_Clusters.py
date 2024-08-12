@@ -7,16 +7,43 @@ from sklearn.cluster import KMeans
 import folium
 import psycopg2
 
-# Définition des arguments en ligne de commande
-parser = argparse.ArgumentParser(description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
-parser.add_argument('--latitude', type=float, required=True, help='Latitude du point de référence')
-parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
-parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
-parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
-parser.add_argument('--min_poi', type=int, required=True, help='Nombre Min de Poi par clusters')
-parser.add_argument('--max_poi', type=int, required=True, help='Nombre Max de Poi par clusters')
-parser.add_argument('--num_clusters', type=int, required=True, help='Nombre de clusters à créer avec KMeans')
-args = parser.parse_args()
+# Connexion à la base de données PostgreSQL
+conn = psycopg2.connect(
+    host="188.166.105.53",
+    port="65001",
+    database="postgres",
+    user="postgres",
+    password="LearnPostgreSQL"
+)
+cursor = conn.cursor()
+
+# Connexion à la base de données Neo4j
+uri = "bolt://188.166.105.53:7687"
+username = "neo4j"
+password = "od1235Azerty%"
+driver = GraphDatabase.driver(uri, auth=(username, password))
+
+# Fonction pour récupérer les coordonnées GPS et les labels des POIs de chaque cluster depuis Neo4j
+def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10):
+    clusters_data = {}
+    with driver.session() as session:
+        result = session.run(
+            """
+            MATCH (c:Cluster)<-[:BELONGS_TO]-(p:POI)
+            WITH c, p
+            ORDER BY c.name, p.label_fr
+            WHERE size([(c)-[:BELONGS_TO]-(p2) | p2]) >= $min_poi_count
+            RETURN c.name AS cluster_name, collect([p.latitude, p.longitude, p.label_fr]) AS poi_data
+            LIMIT $max_clusters
+            """,
+            min_poi_count=min_poi_count,
+            max_clusters=max_clusters
+        )
+        for record in result:
+            cluster_name = record["cluster_name"]
+            poi_data = record["poi_data"][:max_pois_per_cluster]  # Limiter les POI par cluster
+            clusters_data[cluster_name] = poi_data
+    return clusters_data
 
 # Fonction pour filtrer les points d'intérêt dans un rayon donné autour d'une position
 def filter_pois(position, pois, radius_km):
@@ -31,15 +58,22 @@ def filter_pois(position, pois, radius_km):
             print("Coordonnées incorrectes")
     return list_pois
 
-# Connexion à la base de données PostgreSQL
-conn = psycopg2.connect(
-    host="188.166.105.53",
-    port="65001",
-    database="postgres",
-    user="postgres",
-    password="LearnPostgreSQL"
-)
-cursor = conn.cursor()
+
+
+
+# Définition des arguments en ligne de commande
+parser = argparse.ArgumentParser(
+    description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
+parser.add_argument('--latitude', type=float, required=True, help='Latitude du point de référence')
+parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
+parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
+parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
+parser.add_argument('--min_poi', type=int, required=True, help='Nombre Min de Poi par clusters')
+parser.add_argument('--max_poi', type=int, required=True, help='Nombre Max de Poi par clusters')
+parser.add_argument('--num_clusters', type=int, required=True, help='Nombre de clusters à créer avec KMeans')
+args = parser.parse_args()
+
+
 
 # Requête SQL pour récupérer les points d'intérêt correspondant aux types spécifiés
 poi_types_condition = " OR ".join([f"tp.type = '{poi_type}'" for poi_type in args.poi_types])
@@ -70,15 +104,11 @@ if len(list_pois) < args.min_poi:
 
 # Utilisation de KMeans pour regrouper les POIs en clusters
 X = [(row[1], row[2]) for row in list_pois]
-kmeans = KMeans(n_clusters=args.num_clusters, n_init=10, random_state=42)  # Définir random_state pour la reproductibilité
+kmeans = KMeans(n_clusters=args.num_clusters, n_init=10,
+                random_state=42)  # Définir random_state pour la reproductibilité
 kmeans.fit(X)
 clusters = kmeans.labels_
 
-# Connexion à la base de données Neo4j
-uri = "bolt://188.166.105.53:7687"
-username = "neo4j"
-password = "od1235Azerty%"
-driver = GraphDatabase.driver(uri, auth=(username, password))
 
 def create_graph(tx):
     # Supprimer tous les nœuds et relations existants dans la base Neo4j
@@ -110,6 +140,7 @@ def create_graph(tx):
             label_fr=label_fr, latitude=latitude, longitude=longitude, cluster_name=cluster_name
         )
 
+
 # Création de la session Neo4j et exécution de la transaction
 with driver.session() as session:
     session.write_transaction(create_graph)
@@ -118,27 +149,6 @@ with driver.session() as session:
 cursor.close()
 conn.close()
 
-# Fonction pour récupérer les coordonnées GPS et les labels des POIs de chaque cluster depuis Neo4j
-def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10):
-    clusters_data = {}
-    with driver.session() as session:
-        result = session.run(
-            """
-            MATCH (c:Cluster)<-[:BELONGS_TO]-(p:POI)
-            WITH c, p
-            ORDER BY c.name, p.label_fr
-            WHERE size([(c)-[:BELONGS_TO]-(p2) | p2]) >= $min_poi_count
-            RETURN c.name AS cluster_name, collect([p.latitude, p.longitude, p.label_fr]) AS poi_data
-            LIMIT $max_clusters
-            """,
-            min_poi_count=min_poi_count,
-            max_clusters=max_clusters
-        )
-        for record in result:
-            cluster_name = record["cluster_name"]
-            poi_data = record["poi_data"][:max_pois_per_cluster]  # Limiter les POI par cluster
-            clusters_data[cluster_name] = poi_data
-    return clusters_data
 
 # Récupérer les données des POIs pour les clusters avec au moins 6 POI et au maximum 10 clusters
 clusters_data = get_clusters_poi_data(min_poi_count=args.min_poi, max_clusters=10, max_pois_per_cluster=args.max_poi)
@@ -153,7 +163,8 @@ colors = [
     'gray - Jour 9', 'black - Jour 10'
 ]
 if args.num_clusters > len(colors):
-    raise ValueError("Le nombre de clusters dépasse le nombre de couleurs disponibles. Veuillez ajouter plus de couleurs.")
+    raise ValueError(
+        "Le nombre de clusters dépasse le nombre de couleurs disponibles. Veuillez ajouter plus de couleurs.")
 
 # Créer une liste pour stocker les données à écrire dans le CSV
 csv_data = []
