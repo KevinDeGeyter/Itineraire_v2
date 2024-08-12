@@ -19,7 +19,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying the application to ${DEPLOYMENT_SERVER_HOST}.'
+                sh 'echo Deploying the application to ${DEPLOYMENT_SERVER_HOST}'
                 sh 'sshpass -p ${USER_PASSWORD_SERVER_HOST} scp ./docker-compose.yml ${USER_SERVER_HOST}@${DEPLOYMENT_SERVER_HOST}:/home/jenkins \
                 && sshpass -p ${USER_PASSWORD_SERVER_HOST} ssh ${USER_SERVER_HOST}@${DEPLOYMENT_SERVER_HOST} \
                 "docker login -u ${USER_REGISTRY} -p ${USER_PASSWORD_REGISTRY} \
