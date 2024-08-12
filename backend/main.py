@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from routers.datatourisme import routerDataTourisme as dataTourisme_router
+from routers.neo4j import routerDataNeo4j as dataNeo4j_router
 from routers.tripadvisor import routerTripAdvisor as tripadvisor_router
 
 # define origins
@@ -34,6 +35,8 @@ async def shutdown_event():
 
 app.include_router(tripadvisor_router, prefix="/tripadvisor", tags=["Tripadvisor"])
 app.include_router(dataTourisme_router, prefix="/data", tags=["DataTourisme"])
+app.include_router(dataNeo4j_router, prefix="/neo4j", tags=["Neo4j"])
+
 
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8080, reload=True)

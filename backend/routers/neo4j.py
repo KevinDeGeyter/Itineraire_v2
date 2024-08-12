@@ -8,7 +8,7 @@ from geopy.distance import geodesic
 # logger = logging.getLogger('uvicorn.error')
 # logger.setLevel(logging.DEBUG)
 
-routerDataTourisme = APIRouter()
+routerDataNeo4j = APIRouter()
 
 # Configurer le format de journalisation
 logging.basicConfig(level=logging.DEBUG,
@@ -18,15 +18,15 @@ logging.basicConfig(level=logging.DEBUG,
 logger = logging.getLogger(__name__)
 
 
-@routerDataTourisme.get("/", response_description="Data Tourisme")
+@routerDataNeo4j.get("/", response_description="Data Neo4j")
 async def hello():
-    return {"data": "Hello Data Tourisme"}
+    return {"data": "Hello Data Neo4j"}
 
 
-@routerDataTourisme.post("/poi", response_description="Data Tourisme")
-async def create_poi(data: dict = Body(...)):
+@routerDataNeo4j.post("/graph", response_description="Data Neo4j")
+async def create_graph_neo4j(data: dict = Body(...)):
     # await asyncio.sleep(5)
     # received_data = {"result": data}
-    logger.debug("create_poi %s", json.dumps(data, indent=4))
+    logger.debug("create_graph %s", json.dumps(data, indent=4))
 
     return {"status": "OK", "data": data}
