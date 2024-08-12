@@ -11,9 +11,6 @@ import time
 
 # API key for OpenRouteService
 # '5b3ce3597851110001cf6248a77c9061ac354f63b239407848bb9f8f'
-API_KEY = os.getenv('OPENROUTE_API_KEY')
-ORS_URL = 'https://api.openrouteservice.org/v2/directions'
-
 
 # Fonction pour charger les données
 def load_data():
@@ -126,6 +123,9 @@ def generate_map(route, coordinates):
 
 # Fonction pour tracer l'itinéraire avec OpenRouteService
 def get_ors_route(coordinates, mode):
+    API_KEY = os.getenv('OPENROUTE_API_KEY')
+    ORS_URL = 'https://api.openrouteservice.org/v2/directions'
+
     headers = {
         'Authorization': API_KEY,
         'Content-Type': 'application/json; charset=utf-8',
@@ -159,6 +159,9 @@ def get_ors_route(coordinates, mode):
 
 
 def get_route_from_openrouteservice(coordinates, mode):
+    API_KEY = os.getenv('OPENROUTE_API_KEY')
+    ORS_URL = 'https://api.openrouteservice.org/v2/directions'
+
     modes = {
         "driving-car": "driving-car",
         "cycling-regular": "cycling-regular",
