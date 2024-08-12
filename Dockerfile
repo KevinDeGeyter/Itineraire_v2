@@ -18,6 +18,7 @@ RUN pip install --no-cache-dir \
     fastapi \
     bcrypt \
     beanie \
+    ortools \
     email-validator \
     requests \
     httpx \
