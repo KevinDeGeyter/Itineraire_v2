@@ -25,6 +25,7 @@ pipeline {
                 "docker login -u ${USER_REGISTRY} -p ${USER_PASSWORD_REGISTRY} \
                 && docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
                 && export DC_TRIPADVISOR_API_KEY=${TRIPADVISOR_API_KEY} \
+                && export DC_OPENROUTE_API_KEY=${OPENROUTE_API_KEY} \
                 && export DC_IMAGE_NAME=${IMAGE_NAME} \
                 && export DC_IMAGE_TAG=${IMAGE_TAG} \
                 && export DC_APP_PORT=8501 \

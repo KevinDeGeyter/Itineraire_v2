@@ -1,6 +1,8 @@
 services:
   streamlit:
     image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
+    environment:
+      - OPENROUTE_API_KEY=${DC_OPENROUTE_API_KEY}
     ports:
       - ${DC_APP_PORT}:${DC_APP_PORT}
     command: python3 -m streamlit run Streamlit_app.py

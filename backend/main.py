@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from routers.datatourisme import routerDataTourisme as dataTourisme_router
 from routers.neo4j import routerDataNeo4j as dataNeo4j_router
-from routers.tripadvisor import routerTripAdvisor as tripadvisor_router
 
 # define origins
 origins = ["*"]
@@ -33,7 +32,6 @@ async def startup_event():
 async def shutdown_event():
     logger.debug('This is a debug message from shutdown_event')
 
-app.include_router(tripadvisor_router, prefix="/tripadvisor", tags=["Tripadvisor"])
 app.include_router(dataTourisme_router, prefix="/data", tags=["DataTourisme"])
 app.include_router(dataNeo4j_router, prefix="/neo4j", tags=["Neo4j"])
 
