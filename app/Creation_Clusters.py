@@ -13,6 +13,9 @@ parser.add_argument('--latitude', type=float, required=True, help='Latitude du p
 parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
 parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
 parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
+parser.add_argument('--min_poi', type=int, required=True, help='Nombre Min de Poi par clusters')
+parser.add_argument('--max_poi', type=int, required=True, help='Nombre Max de Poi par clusters')
+parser.add_argument('--num_clusters', type=int, required=True, help='Nombre de clusters à créer avec KMeans')
 args = parser.parse_args()
 
 # Fonction pour filtrer les points d'intérêt dans un rayon donné autour d'une position
@@ -60,9 +63,14 @@ reference_position = (args.latitude, args.longitude)
 # Filtrer les points d'intérêt dans le rayon spécifié autour de la position de référence
 list_pois = filter_pois(reference_position, rows, args.radius)
 
+# Vérifier le nombre de POIs filtrés
+if len(list_pois) < args.min_poi:
+    print("ERROR: Pas assez de points d'intérêt disponibles pour vos critères.")
+    sys.exit(1)
+
 # Utilisation de KMeans pour regrouper les POIs en clusters
 X = [(row[1], row[2]) for row in list_pois]
-kmeans = KMeans(n_clusters=10, n_init=10)
+kmeans = KMeans(n_clusters=args.num_clusters, n_init=10, random_state=42)  # Définir random_state pour la reproductibilité
 kmeans.fit(X)
 clusters = kmeans.labels_
 
@@ -72,7 +80,6 @@ username = "neo4j"
 password = "od1235Azerty%"
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
-# Fonction pour créer les clusters et les POIs dans Neo4j
 def create_graph(tx):
     # Supprimer tous les nœuds et relations existants dans la base Neo4j
     tx.run("MATCH (n) DETACH DELETE n")
@@ -80,20 +87,27 @@ def create_graph(tx):
     # Création des clusters
     for i in range(max(clusters) + 1):
         cluster_name = f"Cluster_{i}"
-        tx.run("CREATE (:Cluster {name: $name})", name=cluster_name)
+        tx.run(
+            "MERGE (:Cluster {name: $name})",
+            name=cluster_name
+        )
 
-    # Création des POIs et des relations avec les clusters
+    # Création des POIs et des relations avec les clusters (en vérifiant leur existence)
     for i, row in enumerate(list_pois):
         label_fr, latitude, longitude, poi_type = row
         cluster_name = f"Cluster_{clusters[i]}"
+
+        # Créer le POI s'il n'existe pas déjà
         tx.run(
-            "CREATE (:POI {label_fr: $label_fr, latitude: $latitude, longitude: $longitude, poi_type: $poi_type})",
+            "MERGE (poi:POI {label_fr: $label_fr, latitude: $latitude, longitude: $longitude, poi_type: $poi_type})",
             label_fr=label_fr, latitude=latitude, longitude=longitude, poi_type=poi_type
         )
+
+        # Créer la relation entre le POI et le cluster s'il n'existe pas déjà
         tx.run(
-            "MATCH (poi:POI {label_fr: $label_fr}), (cluster:Cluster {name: $cluster_name}) "
-            "CREATE (poi)-[:BELONGS_TO]->(cluster)",
-            label_fr=label_fr, cluster_name=cluster_name
+            "MATCH (poi:POI {label_fr: $label_fr, latitude: $latitude, longitude: $longitude}), (cluster:Cluster {name: $cluster_name}) "
+            "MERGE (poi)-[:BELONGS_TO]->(cluster)",
+            label_fr=label_fr, latitude=latitude, longitude=longitude, cluster_name=cluster_name
         )
 
 # Création de la session Neo4j et exécution de la transaction
@@ -127,20 +141,27 @@ def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster
     return clusters_data
 
 # Récupérer les données des POIs pour les clusters avec au moins 6 POI et au maximum 10 clusters
-clusters_data = get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10)
+clusters_data = get_clusters_poi_data(min_poi_count=args.min_poi, max_clusters=10, max_pois_per_cluster=args.max_poi)
 
 # Créer la carte
 map = folium.Map(location=[args.latitude, args.longitude], zoom_start=12)
 
 # Définir les couleurs pour les marqueurs de chaque cluster
-colors = ['red', 'blue', 'green', 'purple', 'orange', 'lightgreen', 'pink', 'white', 'gray', 'black']
+colors = [
+    'red - Jour 1', 'blue - Jour 2', 'green - Jour 3', 'purple - Jour 4',
+    'orange - Jour 5', 'lightgreen - Jour 6', 'pink - Jour 7', 'white - Jour 8',
+    'gray - Jour 9', 'black - Jour 10'
+]
+if args.num_clusters > len(colors):
+    raise ValueError("Le nombre de clusters dépasse le nombre de couleurs disponibles. Veuillez ajouter plus de couleurs.")
 
 # Créer une liste pour stocker les données à écrire dans le CSV
 csv_data = []
 
 # Ajouter un marqueur pour chaque POI de chaque cluster avec une couleur différente
 for i, (cluster_name, poi_data) in enumerate(clusters_data.items()):
-    color = colors[i % len(colors)]  # Utilisation d'une couleur cyclique pour chaque cluster
+    color_info = colors[i % len(colors)]  # Utilisation d'une couleur cyclique pour chaque cluster
+    color = color_info.split(' - ')[0]  # Extraire la couleur seulement
     for poi_coordinate in poi_data:
         latitude, longitude, label_fr = poi_coordinate
         # Ajouter un marqueur avec une info-bulle (tooltip) pour afficher le label_fr du POI
@@ -152,7 +173,7 @@ for i, (cluster_name, poi_data) in enumerate(clusters_data.items()):
 
         # Ajouter les données au CSV
         csv_data.append({
-            'color': color,
+            'color': color_info,
             'label_fr': label_fr,
             'latitude': latitude,
             'longitude': longitude

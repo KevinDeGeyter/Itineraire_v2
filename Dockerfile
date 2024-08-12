@@ -26,6 +26,6 @@ COPY app/clusters_map.html .
 COPY app/map.html .
 
 
-# EXPOSE 8501 8050
+EXPOSE 8501 8050
 # Commande par défaut pour démarrer Streamlit (à ajuster selon votre besoin)
-# CMD ["streamlit", "run", "Streamlit_app.py"]
+CMD ["streamlit", "run", "Streamlit_app.py"]
