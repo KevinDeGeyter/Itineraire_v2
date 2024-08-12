@@ -153,7 +153,7 @@ def get_ors_route(coordinates, mode):
         return None
 
 def get_route_from_openrouteservice(coordinates, mode):
-    api_key = "5b3ce3597851110001cf6248a77c9061ac354f63b239407848bb9f8f"
+    # api_key = "5b3ce3597851110001cf6248a77c9061ac354f63b239407848bb9f8f"
     modes = {
         "driving-car": "driving-car",
         "cycling-regular": "cycling-regular",
@@ -164,9 +164,9 @@ def get_route_from_openrouteservice(coordinates, mode):
         st.error("Mode de transport non valide.")
         return None
     
-    url = f'https://api.openrouteservice.org/v2/directions/{modes[mode]}/geojson'
+    url = f'{ORS_URL}/{modes[mode]}/geojson'
     headers = {
-        'Authorization': api_key,
+        'Authorization': API_KEY,
         'Content-Type': 'application/json; charset=utf-8'
     }
     body = {
