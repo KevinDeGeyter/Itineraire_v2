@@ -13,6 +13,7 @@ password = "od1235Azerty%"
 
 driver = GraphDatabase.driver(uri, auth=(username, password))
 
+
 def get_pois_and_clusters():
     query = """
     MATCH (poi:POI)-[:BELONGS_TO]->(cluster:Cluster)
@@ -22,6 +23,7 @@ def get_pois_and_clusters():
         result = session.run(query)
         data = pd.DataFrame([record.data() for record in result])
     return data
+
 
 # Récupérer les données
 # data = get_pois_and_clusters()
@@ -38,6 +40,7 @@ app.layout = html.Div([
     dcc.Graph(id='graph'),
 ])
 
+
 @app.callback(
     Output('graph', 'figure'),
     [Input('graph', 'id')]
@@ -52,11 +55,11 @@ def update_graph(_):
     data = data.dropna(subset=['latitude', 'longitude'])
 
     fig = px.scatter_mapbox(
-        data, 
-        lat='latitude', 
-        lon='longitude', 
-        color='cluster_name', 
-        hover_name='label', 
+        data,
+        lat='latitude',
+        lon='longitude',
+        color='cluster_name',
+        hover_name='label',
         hover_data={'type': True, 'cluster_name': False},
         zoom=10,
         height=600
@@ -64,5 +67,6 @@ def update_graph(_):
     fig.update_layout(mapbox_style="open-street-map")
     return fig
 
+
 if __name__ == '__main__':
-    app.run_server(host='0.0.0.0', port=8050,debug=True)
+    app.run_server(host='0.0.0.0', port=8050, debug=True)

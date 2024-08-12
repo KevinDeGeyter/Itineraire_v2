@@ -7,10 +7,7 @@ import streamlit.components.v1 as components
 from ortools.constraint_solver import routing_enums_pb2
 from ortools.constraint_solver import pywrapcp
 import math
-
-# API key for OpenRouteService
-API_KEY = '5b3ce3597851110001cf6248a77c9061ac354f63b239407848bb9f8f'
-ORS_URL = 'https://api.openrouteservice.org/v2/directions'
+import os
 
 # Fonction pour charger les données
 def load_data():
@@ -20,6 +17,7 @@ def load_data():
     except FileNotFoundError:
         st.error("Le fichier 'clusters_data.csv' est introuvable.")
         return pd.DataFrame()  # DF Vide en cas d'erreur
+
 
 def execute_query(latitude, longitude, poi_types, radius, num_clusters, min_poi, max_poi):
     poi_types_str = " ".join(poi_types)
@@ -40,11 +38,12 @@ def execute_query(latitude, longitude, poi_types, radius, num_clusters, min_poi,
             st.error(f"Erreur lors de l'exécution de la requête : {error_message}")
         return False
 
+
 # Fonction pour exécuter la requête de géocodage
 def geocode_sync(address):
     url = 'https://api-adresse.data.gouv.fr/search/'
     params = {'q': address}
-    
+
     try:
         response = requests.get(url, params=params)
         if response.status_code == 200:
@@ -65,28 +64,31 @@ def geocode_sync(address):
         st.error(f"Erreur lors de la requête de géocodage : {str(e)}")
         return None
 
+
 # Fonction pour calculer la distance euclidienne
 def calculate_distance(coord1, coord2):
     return math.sqrt((coord1[0] - coord2[0]) ** 2 + (coord1[1] - coord2[1]) ** 2)
 
+
 def haversine(lat1, lon1, lat2, lon2):
     # Rayon de la Terre en kilomètres
     R = 6371.0
-    
+
     # Conversion des degrés en radians
     lat1, lon1, lat2, lon2 = map(math.radians, [lat1, lon1, lat2, lon2])
-    
+
     # Calcul des différences
     dlat = lat2 - lat1
     dlon = lon2 - lon1
-    
+
     # Formule de Haversine
-    a = math.sin(dlat / 2)**2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2)**2
+    a = math.sin(dlat / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin(dlon / 2) ** 2
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
-    
+
     # Calcul de la distance
     distance = R * c
     return distance
+
 
 def calculate_distance_matrix(coordinates):
     num_points = len(coordinates)
@@ -99,6 +101,7 @@ def calculate_distance_matrix(coordinates):
                 distance_matrix[i][j] = haversine(lat1, lon1, lat2, lon2)
     return distance_matrix
 
+
 # Fonction pour résoudre le problème du voyageur de commerce
 def solve_tsp(distance_matrix):
     data = {}
@@ -107,7 +110,7 @@ def solve_tsp(distance_matrix):
     data['depot'] = 0
 
     manager = pywrapcp.RoutingIndexManager(len(data['distance_matrix']),
-                                             data['num_vehicles'], data['depot'])
+                                           data['num_vehicles'], data['depot'])
 
     routing = pywrapcp.RoutingModel(manager)
 
@@ -139,6 +142,7 @@ def solve_tsp(distance_matrix):
         st.error("Aucune solution trouvée.")
         return None, None
 
+
 def generate_map(route, coordinates):
     m = folium.Map(location=[coordinates[0][0], coordinates[0][1]], zoom_start=13)
     for i, (lat, lon) in enumerate(coordinates):
@@ -149,8 +153,13 @@ def generate_map(route, coordinates):
         folium.PolyLine([(start[0], start[1]), (end[0], end[1])], color="blue", weight=2.5, opacity=1).add_to(m)
     return m
 
+
 # Fonction pour tracer l'itinéraire avec OpenRouteService
 def get_route_from_openrouteservice(coordinates, mode):
+    # API key for OpenRouteService
+    API_KEY = os.getenv('OPENROUTE_API_KEY')
+    ORS_URL = 'https://api.openrouteservice.org/v2/directions'
+
     modes = {
         "driving-car": "driving-car",
         "cycling-regular": "cycling-regular",
@@ -179,8 +188,13 @@ def get_route_from_openrouteservice(coordinates, mode):
     except requests.RequestException as e:
         st.error(f"Erreur lors de la requête OpenRouteService : {str(e)}")
         return None
+
 
 def get_route_from_openrouteservice(coordinates, mode):
+    # API key for OpenRouteService
+    API_KEY = os.getenv('OPENROUTE_API_KEY')
+    ORS_URL = 'https://api.openrouteservice.org/v2/directions'
+
     modes = {
         "driving-car": "driving-car",
         "cycling-regular": "cycling-regular",
@@ -209,7 +223,8 @@ def get_route_from_openrouteservice(coordinates, mode):
     except requests.RequestException as e:
         st.error(f"Erreur lors de la requête OpenRouteService : {str(e)}")
         return None
-        
+
+
 def main():
     st.title("Projet Itinéraire Data Engineer")
 
@@ -229,15 +244,15 @@ def main():
     min_poi = st.text_input("Nombre min de visites par jour :", "3")
     max_poi = st.text_input("Nombre max de visites par jour :", "7")
     poi_types = st.multiselect("Types de points d'intérêt :", [
-        "Culture", "Religion", "Sport", "Loisir", "Divertissement", "Hebergement", 
-        "Restauration", "Boisson", "Banque", "Hebergement", "Autre", "Plage", 
-        "Mobilité réduite", "Moyen de locomotion", "Montagne", "Antiquité", 
-        "Histoire", "Musée", "Détente", "Bar", "Commerce local", "Point de vue", 
-        "Nature", "Camping", "Cours d'eau", "Service", "Monument", "Jeunesse", 
-        "Apprentissage", "Marché", "Vélo", "Magasin", "Animaux", "Location", 
-        "Parcours", "Santé", "Information", "Militaire", "Parking", 
-        "Marche à pied", "POI", "Piscine"], 
-        default=["Monument"])
+        "Culture", "Religion", "Sport", "Loisir", "Divertissement", "Hebergement",
+        "Restauration", "Boisson", "Banque", "Hebergement", "Autre", "Plage",
+        "Mobilité réduite", "Moyen de locomotion", "Montagne", "Antiquité",
+        "Histoire", "Musée", "Détente", "Bar", "Commerce local", "Point de vue",
+        "Nature", "Camping", "Cours d'eau", "Service", "Monument", "Jeunesse",
+        "Apprentissage", "Marché", "Vélo", "Magasin", "Animaux", "Location",
+        "Parcours", "Santé", "Information", "Militaire", "Parking",
+        "Marche à pied", "POI", "Piscine"],
+                               default=["Monument"])
 
     if coordinates:
         st.markdown("## Carte initiale")
@@ -257,7 +272,7 @@ def main():
                         st.components.v1.html(html_code, width=800, height=600)
                 except FileNotFoundError:
                     st.error("Le fichier 'clusters_map.html' est introuvable.")
-                
+
                 st.markdown("## Données des établissements")
                 try:
                     df = pd.read_csv("clusters_data.csv")
@@ -314,14 +329,16 @@ def main():
         if len(coordinates) > 1:
             distance_matrix = calculate_distance_matrix(coordinates)
             st.write("## Matrice des distances")
-            st.dataframe(pd.DataFrame(distance_matrix, columns=[f'Point {i+1}' for i in range(len(coordinates))], index=[f'Point {i+1}' for i in range(len(coordinates))]))
+            st.dataframe(pd.DataFrame(distance_matrix, columns=[f'Point {i + 1}' for i in range(len(coordinates))],
+                                      index=[f'Point {i + 1}' for i in range(len(coordinates))]))
         else:
             st.warning("Il doit y avoir au moins deux points pour afficher la matrice des distances.")
     st.header("Tracer l'itinéraire avec OpenRouteService")
 
     coordinates = filtered_data[['longitude', 'latitude']].values.tolist()
 
-    transport_mode = st.selectbox("Choisissez un mode de transport :", ["driving-car", "cycling-regular", "foot-walking"])
+    transport_mode = st.selectbox("Choisissez un mode de transport :",
+                                  ["driving-car", "cycling-regular", "foot-walking"])
 
     if st.button("Tracer le chemin sur la carte"):
         if len(coordinates) > 1:
@@ -329,23 +346,25 @@ def main():
             if openrouteservice_data:
                 st.success("L'itinéraire a été tracé avec OpenRouteService !")
                 m = folium.Map(location=[coordinates[0][1], coordinates[0][0]], zoom_start=13)
-                
+
                 for i, (lon, lat) in enumerate(coordinates):
                     folium.Marker([lat, lon], popup=f"Étape {i + 1}").add_to(m)
-                
+
                 if 'features' in openrouteservice_data and len(openrouteservice_data['features']) > 0:
                     route_coords = openrouteservice_data['features'][0]['geometry']['coordinates']
-                    folium.PolyLine([(coord[1], coord[0]) for coord in route_coords], color="blue", weight=2.5, opacity=1).add_to(m)
-                
+                    folium.PolyLine([(coord[1], coord[0]) for coord in route_coords], color="blue", weight=2.5,
+                                    opacity=1).add_to(m)
+
                 st.components.v1.html(m._repr_html_(), width=800, height=600)
             else:
                 st.error("Impossible de tracer l'itinéraire avec OpenRouteService.")
         else:
             st.warning("Il doit y avoir au moins deux points pour tracer un itinéraire.")
-    
+
     st.header("Afficher l'itinéraire OpenRouteService pour un cluster")
 
-    cluster_index = st.number_input("Choisissez un cluster (Jour) :", min_value=0, max_value=len(df['color'].unique()) - 1, step=1)
+    cluster_index = st.number_input("Choisissez un cluster (Jour) :", min_value=0,
+                                    max_value=len(df['color'].unique()) - 1, step=1)
 
     if st.button("Afficher l'itinéraire du cluster sélectionné"):
         filtered_cluster = df[df['color'] == df['color'].unique()[cluster_index]]
@@ -355,20 +374,21 @@ def main():
             openrouteservice_data = get_route_from_openrouteservice(coordinates, transport_mode)
             if openrouteservice_data:
                 st.success("L'itinéraire du cluster a été tracé avec OpenRouteService !")
-                
+
                 # Extraire les instructions de l'itinéraire
                 features = openrouteservice_data.get('features', [])
                 if features:
                     route_coords = features[0]['geometry']['coordinates']
                     route_text = " -> ".join([f"({coord[1]}, {coord[0]})" for coord in route_coords])
                     st.write("**Itinéraire du cluster sélectionné :**")
-                    
+
                     # Extraire les instructions détaillées pour les noms des rues
                     instructions = features[0]['properties'].get('segments', [])[0].get('steps', [])
-                    instructions_text = "\n".join([f"{step['instruction']} (distance: {step['distance']:.2f} m)" for step in instructions])
+                    instructions_text = "\n".join(
+                        [f"{step['instruction']} (distance: {step['distance']:.2f} m)" for step in instructions])
                     st.write("**Instructions détaillées de l'itinéraire :**")
                     st.write(instructions_text)
-                    
+
                     # Lien vers Google Maps
                     google_maps_url = f"https://www.google.com/maps/dir/{'/'.join([f'{coord[1]},{coord[0]}' for coord in route_coords])}"
                     st.write(f"[Ouvrir l'itinéraire sur Google Maps]({google_maps_url})")

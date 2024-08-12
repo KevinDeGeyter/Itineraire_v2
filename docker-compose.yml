@@ -15,7 +15,7 @@ services:
     image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     ports:
       - ${DC_DASH_PORT}:${DC_DASH_PORT}
-    command: python3 dashboard_dash.py
+    command: python3 dash/dashboard_dash.py
     networks:
       - my_network_from_compose
 
