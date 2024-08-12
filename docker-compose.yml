@@ -1,16 +1,16 @@
 services:
   streamlit:
-    build: .
+    image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     ports:
-      - "8501:8501"
+      - ${DC_APP_PORT}:${DC_APP_PORT}
     command: python3 -m streamlit run Streamlit_app.py
     networks:
       - my_network_from_compose
 
   dash:
-    build: .
+    image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     ports:
-      - "8050:8050"
+      - ${DC_DASH_PORT}:${DC_DASH_PORT}
     command: python3 dashboard_dash.py
     networks:
       - my_network_from_compose
