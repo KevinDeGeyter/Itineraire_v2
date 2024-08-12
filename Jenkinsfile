@@ -14,10 +14,10 @@ pipeline {
             }
         stage('Test') {
             steps {
-                echo 'Running tests.'
+                echo 'Running fake tests.'
             }
         }
-        stage('Deploy to Staging') {
+        stage('Deploy to Staging to ${DEPLOYMENT_SERVER_HOST}') {
             steps {
                 echo 'Deploying the application.'
                 sh 'sshpass -p ${USER_PASSWORD_SERVER_HOST} scp ./docker-compose.yml ${USER_SERVER_HOST}@${DEPLOYMENT_SERVER_HOST}:/home/jenkins \
