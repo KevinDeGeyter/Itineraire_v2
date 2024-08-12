@@ -46,6 +46,7 @@ COPY backend/main.py backend
 COPY backend/routers/__init__.py backend/routers
 COPY backend/routers/tripadvisor.py backend/routers
 COPY backend/routers/datatourisme.py backend/routers
+COPY backend/routers/neo4j.py backend/routers
 
 
 # EXPOSE 8501 8050
