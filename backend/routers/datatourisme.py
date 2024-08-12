@@ -23,7 +23,7 @@ async def hello():
     return {"data": "Hello Data Tourisme"}
 
 
-@routerDataTourisme.post("/graph", response_description="Data Tourisme")
+@routerDataTourisme.post("/graph", response_description="Neo4j")
 async def create_graph_neo4j(data: dict = Body(...)):
     # await asyncio.sleep(5)
     # received_data = {"result": data}
