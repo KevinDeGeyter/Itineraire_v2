@@ -9,9 +9,6 @@ from ortools.constraint_solver import pywrapcp, routing_enums_pb2
 # from ortools.constraint_solver import pywrapcp
 import time
 
-# API key for OpenRouteService
-# '5b3ce3597851110001cf6248a77c9061ac354f63b239407848bb9f8f'
-
 # Fonction pour charger les données
 def load_data():
     try:

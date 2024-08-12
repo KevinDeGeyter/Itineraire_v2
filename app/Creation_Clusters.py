@@ -8,6 +8,22 @@ import folium
 import psycopg2
 
 
+# Connexion à la base de données PostgreSQL
+conn = psycopg2.connect(
+    host="188.166.105.53",
+    port="65001",
+    database="postgres",
+    user="postgres",
+    password="LearnPostgreSQL"
+)
+cursor = conn.cursor()
+
+# Connexion à la base de données Neo4j
+uri = "bolt://188.166.105.53:7687"
+username = "neo4j"
+password = "od1235Azerty%"
+driver = GraphDatabase.driver(uri, auth=(username, password))
+
 # Fonction pour filtrer les points d'intérêt dans un rayon donné autour d'une position
 def filter_pois(position, pois, radius_km):
     list_pois = []
@@ -20,6 +36,7 @@ def filter_pois(position, pois, radius_km):
         else:
             print("Coordonnées incorrectes")
     return list_pois
+
 
 # Fonction pour créer les clusters et les POIs dans Neo4j
 def create_graphXxxxx(tx, clusters, list_pois):
@@ -45,6 +62,7 @@ def create_graphXxxxx(tx, clusters, list_pois):
             label_fr=label_fr, cluster_name=cluster_name
         )
 
+
 # Fonction pour récupérer les coordonnées GPS et les labels des POIs de chaque cluster depuis Neo4j
 def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster=10):
     clusters_data = {}
@@ -69,22 +87,13 @@ def get_clusters_poi_data(min_poi_count=6, max_clusters=10, max_pois_per_cluster
 
 
 # Définition des arguments en ligne de commande
-parser = argparse.ArgumentParser(description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
+parser = argparse.ArgumentParser(
+    description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
 parser.add_argument('--latitude', type=float, required=True, help='Latitude du point de référence')
 parser.add_argument('--longitude', type=float, required=True, help='Longitude du point de référence')
 parser.add_argument('--poi_types', nargs='+', required=True, help='Types d_activité')
 parser.add_argument('--radius', type=float, required=True, help='Rayon en kilomètres pour filtrer les points d_intérêt')
 args = parser.parse_args()
-
-# Connexion à la base de données PostgreSQL
-conn = psycopg2.connect(
-    host="188.166.105.53",
-    port="65001",
-    database="postgres",
-    user="postgres",
-    password="LearnPostgreSQL"
-)
-cursor = conn.cursor()
 
 # Requête SQL pour récupérer les points d'intérêt correspondant aux types spécifiés
 poi_types_condition = " OR ".join([f"tp.type = '{poi_type}'" for poi_type in args.poi_types])
@@ -114,11 +123,6 @@ kmeans = KMeans(n_clusters=10, n_init=10)
 kmeans.fit(X)
 clusters = kmeans.labels_
 
-# Connexion à la base de données Neo4j
-uri = "bolt://188.166.105.53:7687"
-username = "neo4j"
-password = "od1235Azerty%"
-driver = GraphDatabase.driver(uri, auth=(username, password))
 
 # Fonction pour créer les clusters et les POIs dans Neo4j
 def create_graph(tx):
@@ -143,6 +147,7 @@ def create_graph(tx):
             "CREATE (poi)-[:BELONGS_TO]->(cluster)",
             label_fr=label_fr, cluster_name=cluster_name
         )
+
 
 # Création de la session Neo4j et exécution de la transaction
 with driver.session() as session:
