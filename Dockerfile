@@ -14,16 +14,38 @@ RUN pip install --no-cache-dir \
     dash \
     plotly \
     asyncio \
-    ortools \
-    numpy \
-    spicy
+    nest_asyncio \
+    fastapi \
+    bcrypt \
+    beanie \
+    email-validator \
+    requests \
+    httpx \
+    Jinja2 \
+    motor \
+    passlib \
+    pytest \
+    python-multipart \
+    python-dotenv \
+    python-jose \
+    sqlmodel \
+    uvicorn
 
 COPY app/Creation_Clusters.py .
 COPY app/Streamlit_app.py .
-COPY app/dashboard_dash.py .
+# COPY app/dashboard_dash.py .
 COPY app/clusters_data.csv .
 COPY app/clusters_map.html .
 COPY app/map.html .
+
+RUN mkdir dash
+COPY dash/dashboard_dash.py dash
+
+RUN mkdir -p backend/routers
+COPY backend/main.py backend
+COPY backend/routers/__init__.py backend/routers
+COPY backend/routers/tripadvisor.py backend/routers
+COPY backend/routers/datatourisme.py backend/routers
 
 
 # EXPOSE 8501 8050

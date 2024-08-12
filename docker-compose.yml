@@ -11,7 +11,17 @@ services:
     image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
     ports:
       - ${DC_DASH_PORT}:${DC_DASH_PORT}
-    command: python3 dashboard_dash.py
+    command: python3 dash/dashboard_dash.py
+    networks:
+      - my_network_from_compose
+      -
+  backend:
+    image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
+    environment:
+      - TRIPADVISOR_API_KEY=${DC_TRIPADVISOR_API_KEY}
+    ports:
+      - ${DC_BACKEND_PORT}:${DC_BACKEND_PORT}
+    command: python3 backend/main.py
     networks:
       - my_network_from_compose
 
