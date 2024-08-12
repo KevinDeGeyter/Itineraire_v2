@@ -24,8 +24,12 @@ pipeline {
                 && sshpass -p ${USER_PASSWORD_SERVER_HOST} ssh ${USER_SERVER_HOST}@${DEPLOYMENT_SERVER_HOST} \
                 "docker login -u ${USER_REGISTRY} -p ${USER_PASSWORD_REGISTRY} \
                 && docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
-                && export DC_TRIPADVISOR_API_KEY=${TRIPADVISOR_API_KEY} && export DC_IMAGE_NAME=${IMAGE_NAME} && export DC_IMAGE_TAG=${IMAGE_TAG} \
-                && export DC_APP_PORT=8501 && export DC_DASH_PORT=8050 && export DC_BACKEND_PORT=8080 \
+                && export DC_TRIPADVISOR_API_KEY=${TRIPADVISOR_API_KEY} \
+                && export DC_IMAGE_NAME=${IMAGE_NAME} \
+                && export DC_IMAGE_TAG=${IMAGE_TAG} \
+                && export DC_APP_PORT=8501 \
+                && export DC_DASH_PORT=8050 \
+                && export DC_BACKEND_PORT=8080 \
                 && docker compose down && docker compose up -d"'
             }
         }
