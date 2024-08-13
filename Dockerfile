@@ -13,6 +13,7 @@ RUN pip install --no-cache-dir \
     streamlit_folium \
     dash \
     plotly \
+    ortools \
     asyncio \
     nest_asyncio \
     fastapi \
