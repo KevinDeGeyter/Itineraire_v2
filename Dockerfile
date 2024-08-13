@@ -14,9 +14,22 @@ RUN pip install --no-cache-dir \
     dash \
     plotly \
     asyncio \
-    ortools \
-    numpy \
-    spicy
+    nest_asyncio \
+    fastapi \
+    bcrypt \
+    beanie \
+    email-validator \
+    requests \
+    httpx \
+    Jinja2 \
+    motor \
+    passlib \
+    pytest \
+    python-multipart \
+    python-dotenv \
+    python-jose \
+    sqlmodel \
+    uvicorn
 
 COPY app/Creation_Clusters.py .
 COPY app/Streamlit_app.py .

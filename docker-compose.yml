@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   streamlit:
     image: ${DC_IMAGE_NAME}:${DC_IMAGE_TAG}
