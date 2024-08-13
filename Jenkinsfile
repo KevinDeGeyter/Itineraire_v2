@@ -24,7 +24,9 @@ pipeline {
                 && sshpass -p ${USER_PASSWORD_SERVER_HOST} ssh ${USER_SERVER_HOST}@${DEPLOYMENT_SERVER_HOST} \
                 "docker login -u ${USER_REGISTRY} -p ${USER_PASSWORD_REGISTRY} \
                 && docker pull ${IMAGE_NAME}:${IMAGE_TAG} \
-                && export DC_TRIPADVISOR_API_KEY=${TRIPADVISOR_API_KEY} \
+                && export DC_POSTGRE_HOST=${POSTGRE_HOST} \
+                && export DC_POSTGRE_USER=${POSTGRE_USER} \
+                && export DC_POSTGRE_USER_PASSWORD=${POSTGRE_USER_PASSWORD} \
                 && export DC_OPENROUTE_API_KEY=${OPENROUTE_API_KEY} \
                 && export DC_IMAGE_NAME=${IMAGE_NAME} \
                 && export DC_IMAGE_TAG=${IMAGE_TAG} \
