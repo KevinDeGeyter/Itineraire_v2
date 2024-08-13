@@ -59,8 +59,6 @@ def filter_pois(position, pois, radius_km):
     return list_pois
 
 
-
-
 # Définition des arguments en ligne de commande
 parser = argparse.ArgumentParser(
     description='Script pour créer des clusters de Points d_intérêt en fonction de la localisation et du type d_activité.')
